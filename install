@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sudo pip install python-networkmanager
+
+echo "enter the SSID of your network"
+read SSID
+
+# Install service
+sudo mkdir -p /opt/lockmenot
+sudo cp -f lockmenot.py /opt/lockmenot
+sudo cp -f lockmenot.conf /etc/init/lockmenot.conf
+sudo sed -i "s/USERNAME/$USER/g" /etc/init/lockmenot.conf
+sudo sed -i "s/SSID/$SSID/g" /etc/init/lockmenot.conf
